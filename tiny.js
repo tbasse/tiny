@@ -12,7 +12,7 @@
  *   original_id = Tiny.reverseTiny(obfuscated_id)
  *
  * Configuration:
- *   You must user Tiny.generateSet() to generate your own set
+ *   You need to use Tiny.generateSet() to generate your own set
  *   Do *not* change this once you start using Tiny, as you won't be able to Tiny.reverseTiny()
  *   any values toTiny()'ed with another set.
  *
@@ -20,7 +20,6 @@
  
 (function() { 
   var root = this;
-  var set = 'iPKMFbnBdoSOWTthzrmUDGClAeQVsfRZwyguNEYcpqaIHvJkxXjL';
   var set = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var warnDefaultSet = function() {
     if( set === 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' ) console.warn('Tiny.js character set is still default. You need to generate your own.');
@@ -41,7 +40,9 @@
         var r = id % radix;
         hex_n = set[r] + hex_n;
         id = (id-r) / radix;
-        if( id === 0 ) break;
+        if( id === 0 ) {
+          break;
+        }
       }
       return hex_n;
     },
@@ -61,7 +62,7 @@
         if (i<91 || i>96) arr.push( String.fromCharCode(i) );
       }
       arr = arr.concat(range(0, 9));
-      arr.sort(function() {return 0.5 - Math.random()}) // shuffle array
+      arr.sort( function() { return 0.5 - Math.random(); } ) // shuffle array
       return arr.join('');
     }
   }
@@ -72,12 +73,10 @@
    }
    exports = Tiny;
   } else if (typeof define === 'function' && define.amd) {
-   // Register as a named module with AMD.
    define('Tiny', function() {
      return Tiny;
    });
   } else {
-   // Exported as a string, for Closure Compiler "advanced" mode.
    root['Tiny'] = Tiny;
   }
    
