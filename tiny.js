@@ -28,7 +28,8 @@
     var arr = [];
     for( var i=low; i<=high; i++ ) {
       arr.push(i);
-    }
+    };
+    return arr;
   };
   var Tiny = {
     toTiny: function(id) {
